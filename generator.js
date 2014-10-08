@@ -30,27 +30,29 @@ String.prototype.replaceLast = function(text, newText) {
 var renameAllFoldersAndFiles = function(file, projectName){
 
     var fileInfo = fs.lstatSync(file);
-    if((fileInfo.isDirectory() && (file.nameContains('starscream') ||
-                                   file.nameContains('Starscream') ||
-                                   file.nameContains('StarScream'))) ||
-        file.endsWith('.sln')){
+    if(file.nameContains('starscream') ||
+        file.nameContains('Starscream') ||
+        file.nameContains('StarScream')){
 
-        var newFileName= '';
-        if(file.nameContains('StarScream')){
-            newFileName = file.replaceLast('StarScream', projectName);
-        }
-        else if(file.nameContains('Starscream')){
-            newFileName = file.replaceLast('Starscream', projectName);
-        }
-        else if(file.nameContains('starscream')){
-            newFileName = file.replaceLast('starscream', projectName);
-        }
+        if(fileInfo.isDirectory() || file.endsWith('.sln') || file.endsWith('.csproj') ){
+            var newFileName= '';
+            if(file.nameContains('StarScream')){
+                newFileName = file.replaceLast('StarScream', projectName);
+            }
+            else if(file.nameContains('Starscream')){
+                newFileName = file.replaceLast('Starscream', projectName);
+            }
+            else if(file.nameContains('starscream')){
+                newFileName = file.replaceLast('starscream', projectName);
+            }
 
-        console.log('Old file: '+ file);
-        console.log('New File: '+ newFileName);
+            console.log('Old file: '+ file);
+            console.log('New File: '+ newFileName);
 
-        fs.renameSync(file, newFileName);
+            fs.renameSync(file, newFileName);
+        }
     }
+
 };
 
 var generateNewFile = function(file, projectName){
