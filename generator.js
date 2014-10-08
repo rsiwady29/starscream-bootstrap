@@ -27,13 +27,13 @@ String.prototype.replaceLast = function(text, newText) {
     return partOne + partTwo;
 };
 
-var renameAllFolders = function(file, projectName){
+var renameAllFoldersAndFiles = function(file, projectName){
 
     var fileInfo = fs.lstatSync(file);
-    if(fileInfo.isDirectory() &&
-        (file.nameContains('starscream') ||
-         file.nameContains('Starscream') ||
-         file.nameContains('StarScream')) ){
+    if((fileInfo.isDirectory() && (file.nameContains('starscream') ||
+                                   file.nameContains('Starscream') ||
+                                   file.nameContains('StarScream'))) ||
+        file.endsWith('.sln')){
 
         var newFileName= '';
         if(file.nameContains('StarScream')){
@@ -96,7 +96,7 @@ var generate = function(projectName){
 
     // Rename folders
     files.reverse().forEach(function(file){
-        renameAllFolders(destinationDirectory+'/'+file, projectName);
+        renameAllFoldersAndFiles(destinationDirectory+'/'+file, projectName);
     });
 
     // Get All files again, now with new folder names
