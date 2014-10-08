@@ -30,7 +30,6 @@ String.prototype.replaceLast = function(text, newText) {
 var renameAllFolders = function(file, projectName){
 
     var fileInfo = fs.lstatSync(file);
-
     if(fileInfo.isDirectory() &&
         (file.nameContains('starscream') ||
          file.nameContains('Starscream') ||
@@ -57,7 +56,6 @@ var renameAllFolders = function(file, projectName){
 var generateNewFile = function(file, projectName){
 
     var fileInfo = fs.lstatSync(file);
-
     if(fileInfo.isDirectory() && file.containsAfter('StarscreamBootstrap','Starscream')){
 
         var newFileName = file.replaceLast('Starscream', projectName);
@@ -69,12 +67,17 @@ var generateNewFile = function(file, projectName){
     else if(!fileInfo.isDirectory() && !file.endsWith(".dll") && !file.endsWith(".DS_Store")){
 
         var text = fs.readFileSync(file, 'utf-8');
+        var regex = new RegExp("Starscream|starscream|StarScream","gm")
+        text = text.replace(regex, projectName);
 
-        console.log(text);
+        fs.writeFileSync(file, text);
     }
 };
 
 var generate = function(projectName){
+
+    // This is a naive and brute force approach :)
+    // Suggestions to improve the code are welcomed
 
     var sourceDirectory = __dirname + '/Starscream';
     var destinationDirectory = __dirname + '/temp/' + projectName;
@@ -96,7 +99,13 @@ var generate = function(projectName){
         renameAllFolders(destinationDirectory+'/'+file, projectName);
     });
 
-    // Get al
+    // Get All files again, now with new folder names
+    var files = wrench.readdirSyncRecursive(destinationDirectory);
+
+    files.forEach(function(file){
+        generateNewFile(destinationDirectory+'/'+file, projectName);
+    });
+
 };
 
 generate('test');
