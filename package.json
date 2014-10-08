@@ -1,0 +1,11 @@
+{
+  "name": "StarscreamBootstrap",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "wrench": "^1.5.8"
+  }
+}
