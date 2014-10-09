@@ -2,6 +2,8 @@ var express = require('express');
 var gzippo = require('gzippo');
 var morgan  = require('morgan');
 
+var projectGenerator = require('./generator');
+
 var app     = express();
 var port    = 8080;
 
@@ -11,7 +13,9 @@ app.use(gzippo.staticGzip("" + __dirname + "/dist"));
 
 // API
 app.get('/getStarscream', function(req, res) {
-    res.send('this is a sample! ProjectName: ' + req.query.projectname);
+    var projectname = req.query.projectname;
+
+    projectGenerator.generate(projectname, res);
 });
 
 app.listen(port);

@@ -97,7 +97,7 @@ function convertFilesToObjects(destinationDirectory) {
     return objects;
 }
 
-var getZipBuffer = function(destinationDirectory, files){
+var getZipBuffer = function(destinationDirectory, res){
 
     var zippedArchive = new nodeZip();
 
@@ -106,13 +106,14 @@ var getZipBuffer = function(destinationDirectory, files){
     zippedArchive.addFiles(fileObjects, function(){
         var buff = zippedArchive.toBuffer();
 
-        fs.writeFile("./temp/star.zip", buff, function () {
-            console.log("Finished");
-        });
+        res.contentType('zip');
+        res.setHeader('Content-disposition', 'attachment; filename=starscream_bootstrap.zip');
+        res.send(buff);
+        res.end();
     });
 };
 
-var generate = function(projectName){
+var generate = function(projectName, res){
 
     // This is a naive and brute force approach :)
     // Suggestions to improve the code are welcomed
@@ -145,11 +146,11 @@ var generate = function(projectName){
     });
 
     // Zip Files
-    var zipBuffer = getZipBuffer(destinationDirectory, files);
+    var zipBuffer = getZipBuffer(destinationDirectory, res);
 
     console.log('Success');
 };
 
 // Entry Point
-generate('test');
+module.exports.generate = generate;
 
