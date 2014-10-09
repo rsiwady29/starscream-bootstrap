@@ -1,9 +1,12 @@
+node_modules
+dist
+.tmp
+.sass-cache
+bower_components
+
 #OS junk files
 [Tt]humbs.db
 *.DS_Store
-
-#node modules
-node_modules/
 
 #Idea
 .idea/
