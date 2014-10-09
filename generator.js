@@ -106,7 +106,7 @@ var getZipBuffer = function(destinationDirectory, files){
     zippedArchive.addFiles(fileObjects, function(){
         var buff = zippedArchive.toBuffer();
 
-        fs.writeFile("./star.zip", buff, function () {
+        fs.writeFile("./temp/star.zip", buff, function () {
             console.log("Finished");
         });
     });
@@ -146,7 +146,6 @@ var generate = function(projectName){
 
     // Zip Files
     var zipBuffer = getZipBuffer(destinationDirectory, files);
-
 
     console.log('Success');
 };
