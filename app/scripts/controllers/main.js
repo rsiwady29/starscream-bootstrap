@@ -8,15 +8,17 @@
  * Controller of the starscreamBootstrapApp
  */
 angular.module('starscreamBootstrapApp')
-  .controller('MainCtrl', ['$scope', 'starscreamService', function ($scope,starscreamService) {
+  .controller('MainCtrl', ['$scope','baseUrlService', function ($scope, baseUrlService) {
 
         $scope.getStarscream = function(){
-            starscreamService.downloadStarscream($scope.projectname)
-                .success(function(){
-                    alert('Downloading starscream');
-                })
-                .error(function(err){
-                    console.log(err);
-                });
-        };
+
+            if($scope.projectname == ''){
+                return;
+            }
+
+            var url = baseUrlService.GetBaseUrl();
+            var downloadLink = url + '/getStarscream?projectname='+$scope.projectname;
+
+            window.location = downloadLink;
+        }
   }]);
