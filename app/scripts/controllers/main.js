@@ -8,10 +8,15 @@
  * Controller of the starscreamBootstrapApp
  */
 angular.module('starscreamBootstrapApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('MainCtrl', ['$scope', 'starscreamService', function ($scope,starscreamService) {
+
+        $scope.getStarscream = function(){
+            starscreamService.downloadStarscream($scope.projectname)
+                .success(function(){
+                    alert('Downloading starscream');
+                })
+                .error(function(err){
+                    console.log(err);
+                });
+        };
+  }]);

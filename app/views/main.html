@@ -4,9 +4,9 @@
         A project generator for Acklen Avenue's 'Starscream'.
     </p>
     <p>
-    <form role="form">
+    <form role="form" ng-submit="getStarscream()">
         <div class="form-group">
-            <input type="text" class="form-control" id="projectname" placeholder="Your awesome project name">
+            <input type="text" class="form-control" ng-model="projectname" id="projectname" placeholder="Your awesome project name">
         </div>
         <button class="btn btn-lg btn-success"> Download </button>
     </form>
