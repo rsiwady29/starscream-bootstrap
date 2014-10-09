@@ -1,6 +1,9 @@
 var wrench = require('wrench');
 var fs = require('fs');
+var nodeZip = require("node-native-zip");
 
+
+//  String enhancements
 String.prototype.endsWith = function(suffix) {
     return this.indexOf(suffix, this.length - suffix.length) !== -1;
 };
@@ -27,6 +30,7 @@ String.prototype.replaceLast = function(text, newText) {
     return partOne + partTwo;
 };
 
+// Helper Functions
 var renameAllFoldersAndFiles = function(file, projectName){
 
     var fileInfo = fs.lstatSync(file);
@@ -46,13 +50,12 @@ var renameAllFoldersAndFiles = function(file, projectName){
                 newFileName = file.replaceLast('starscream', projectName);
             }
 
-            console.log('Old file: '+ file);
-            console.log('New File: '+ newFileName);
+            //console.log('Old file: '+ file);
+            //console.log('New File: '+ newFileName);
 
             fs.renameSync(file, newFileName);
         }
     }
-
 };
 
 var generateNewFile = function(file, projectName){
@@ -61,8 +64,8 @@ var generateNewFile = function(file, projectName){
     if(fileInfo.isDirectory() && file.containsAfter('StarscreamBootstrap','Starscream')){
 
         var newFileName = file.replaceLast('Starscream', projectName);
-        console.log('Old file: '+ file);
-        console.log('New File: '+ newFileName);
+        //console.log('Old file: '+ file);
+        //console.log('New File: '+ newFileName);
 
         fs.renameSync(file, newFileName);
     }
@@ -76,6 +79,39 @@ var generateNewFile = function(file, projectName){
     }
 };
 
+function convertFilesToObjects(destinationDirectory) {
+    var files =  wrench.readdirSyncRecursive(destinationDirectory);
+    var objects = []
+    for(var i=0; i<files.length;i++) {
+        var filePath = destinationDirectory + "/" + files[i];
+
+        var fileInfo = fs.lstatSync(filePath);
+        if(!fileInfo.isDirectory()) {
+            objects.push(
+                        {
+                            name: files[i],
+                            path: filePath
+                        });
+        }
+    }
+    return objects;
+}
+
+var getZipBuffer = function(destinationDirectory, files){
+
+    var zippedArchive = new nodeZip();
+
+    var fileObjects = convertFilesToObjects(destinationDirectory);
+
+    zippedArchive.addFiles(fileObjects, function(){
+        var buff = zippedArchive.toBuffer();
+
+        fs.writeFile("./star.zip", buff, function () {
+            console.log("Finished");
+        });
+    });
+};
+
 var generate = function(projectName){
 
     // This is a naive and brute force approach :)
@@ -84,8 +120,8 @@ var generate = function(projectName){
     var sourceDirectory = __dirname + '/Starscream';
     var destinationDirectory = __dirname + '/temp/' + projectName;
 
-    console.log('Source Directory: ' + sourceDirectory);
-    console.log('Destination Directory: ' + destinationDirectory);
+    //console.log('Source Directory: ' + sourceDirectory);
+    //console.log('Destination Directory: ' + destinationDirectory);
 
     //Create Destination Directory:
     wrench.mkdirSyncRecursive(destinationDirectory, 0777);
@@ -108,6 +144,13 @@ var generate = function(projectName){
         generateNewFile(destinationDirectory+'/'+file, projectName);
     });
 
+    // Zip Files
+    var zipBuffer = getZipBuffer(destinationDirectory, files);
+
+
+    console.log('Success');
 };
 
+// Entry Point
 generate('test');
+
