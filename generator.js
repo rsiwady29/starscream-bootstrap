@@ -110,6 +110,9 @@ var getZipBuffer = function(destinationDirectory, res){
         res.setHeader('Content-disposition', 'attachment; filename=starscream_bootstrap.zip');
         res.send(buff);
         res.end();
+
+        // Remove temp directory:
+        wrench.rmdirSyncRecursive(destinationDirectory, false)
     });
 };
 
