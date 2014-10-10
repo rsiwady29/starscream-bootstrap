@@ -72,8 +72,8 @@ var generateNewFile = function(file, projectName){
     else if(fileInfo.isDirectory() && file.containsAfter('StarscreamBootstrap','Starscream')){
 
         var newFileName = file.replaceLast('Starscream', projectName);
-        //console.log('Old file: '+ file);
-        //console.log('New File: '+ newFileName);
+        console.log('Old file: '+ file);
+        console.log('New File: '+ newFileName);
 
         fs.renameSync(file, newFileName);
     }
