@@ -90,7 +90,8 @@ function convertFilesToObjects(destinationDirectory) {
             objects.push(
                         {
                             name: files[i],
-                            path: filePath
+                            path: filePath,
+                            compression: 'deflate'
                         });
         }
     }
@@ -104,15 +105,15 @@ var getZipBuffer = function(destinationDirectory, res){
     var fileObjects = convertFilesToObjects(destinationDirectory);
 
     zippedArchive.addFiles(fileObjects, function(){
-        var buff = zippedArchive.toBuffer();
+        var buff = zippedArchive.toBuffer(function(bufferResult){
+            res.contentType('zip');
+            res.setHeader('Content-disposition', 'attachment; filename=starscream_bootstrap.zip');
+            res.send(bufferResult);
+            res.end();
 
-        res.contentType('zip');
-        res.setHeader('Content-disposition', 'attachment; filename=starscream_bootstrap.zip');
-        res.send(buff);
-        res.end();
-
-        // Remove temp directory:
-        wrench.rmdirSyncRecursive(destinationDirectory, false)
+            // Remove temp directory:
+            wrench.rmdirSyncRecursive(destinationDirectory, false)
+        });
     });
 };
 
