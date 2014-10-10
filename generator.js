@@ -75,7 +75,7 @@ var generateNewFile = function(file, projectName){
         console.log('Old file: '+ file);
         console.log('New File: '+ newFileName);
 
-        fs.renameSync(file, newFileName);
+        fs.renameSync(file, newFileName+'');
     }
     else if(!fileInfo.isDirectory() && !file.endsWith(".dll") && !file.endsWith(".DS_Store")){
 
