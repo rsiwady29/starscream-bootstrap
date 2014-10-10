@@ -21,8 +21,10 @@ angular.module('starscreamBootstrapApp')
                 return;
             }
 
+            /// TODO: Project name should only contain letters
+
             var url = baseUrlService.GetBaseUrl();
-            var downloadLink = url + '/getStarscream?projectname='+$scope.projectname;
+            var downloadLink = url + '/getStarscream?projectname='+$scope.projectname.trim().replace(' ','');
 
             window.location = downloadLink;
         }
