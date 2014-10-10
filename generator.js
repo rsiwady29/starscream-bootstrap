@@ -8,6 +8,10 @@ String.prototype.endsWith = function(suffix) {
     return this.indexOf(suffix, this.length - suffix.length) !== -1;
 };
 
+String.prototype.contains = function(text){
+    return this.indexOf(text) !== -1;
+};
+
 String.prototype.containsAfter = function(suffix, text) {
     var pos = this.indexOf(suffix);
     if(pos<0) return this;
@@ -61,7 +65,11 @@ var renameAllFoldersAndFiles = function(file, projectName){
 var generateNewFile = function(file, projectName){
 
     var fileInfo = fs.lstatSync(file);
-    if(fileInfo.isDirectory() && file.containsAfter('StarscreamBootstrap','Starscream')){
+    if(file.contains('.nuget')){
+        // ignore .nuget folder contents
+        console.log('Ignoring .nuget');
+    }
+    else if(fileInfo.isDirectory() && file.containsAfter('StarscreamBootstrap','Starscream')){
 
         var newFileName = file.replaceLast('Starscream', projectName);
         //console.log('Old file: '+ file);
@@ -157,4 +165,3 @@ var generate = function(projectName, res){
 
 // Entry Point
 module.exports.generate = generate;
-
