@@ -67,7 +67,7 @@ var generateNewFile = function(file, projectName){
     var fileInfo = fs.lstatSync(file);
     if(file.contains('.nuget')){
         // ignore .nuget folder contents
-        console.log('Ignoring .nuget');
+        //console.log('Ignoring .nuget');
     }
     else if(fileInfo.isDirectory() && file.containsAfter('StarscreamBootstrap','Starscream')){
 
@@ -160,7 +160,7 @@ var generate = function(projectName, res){
     // Zip Files
     var zipBuffer = getZipBuffer(destinationDirectory, res);
 
-    console.log('Success');
+    //console.log('Success');
 };
 
 // Entry Point
