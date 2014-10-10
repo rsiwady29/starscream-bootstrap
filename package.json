@@ -3,8 +3,6 @@
   "version": "0.0.0",
   "dependencies": {
     "express": "^4.9.5",
-    "grunt": "^0.4.5",
-    "grunt-cli": "^0.1.13",
     "gzippo": "^0.2.0",
     "morgan": "~1.0.0",
     "node-native-zip": "git://github.com/rsiwady29/node-native-zip#master",
