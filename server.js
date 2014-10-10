@@ -5,7 +5,7 @@ var morgan  = require('morgan');
 var projectGenerator = require('./generator');
 
 var app     = express();
-var port    = 8080;
+var port    = process.env.PORT || 8080;
 
 // Local environment
 app.all('*', function(req, res, next) {
