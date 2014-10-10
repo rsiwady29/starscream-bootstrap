@@ -16,6 +16,11 @@ angular.module('starscreamBootstrapApp')
                 return;
             }
 
+            if($scope.projectname.toLowerCase().indexOf('starscream') != -1){
+                // we currently don't support projects with starscream inside their name < :( >
+                return;
+            }
+
             var url = baseUrlService.GetBaseUrl();
             var downloadLink = url + '/getStarscream?projectname='+$scope.projectname;
 
