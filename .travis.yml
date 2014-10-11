@@ -21,6 +21,7 @@ deploy:
   provider: heroku
   api_key:
     secure: v2rkUbehJDgWWPYRS4LMEhseSxwvorp+OqSwylv5rK97+MFBQa2mWidRqkze6kI8WdrFdDcaN/7XKYSVi2yqyNWZVq8KasRVdc3GAAzL1Epn6vCYPJq7NpA1TySnFZrEOlximc3lYRWl70r94T18AjdWqXM6A1FOZss1ro1fLW8=
+  strategy: git
   app: starscream-bootstrap
   on:
     repo: rsiwady29/starscream-bootstrap
