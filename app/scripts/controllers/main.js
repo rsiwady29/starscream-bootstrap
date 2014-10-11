@@ -27,7 +27,7 @@ angular.module('starscreamBootstrapApp')
 
             $scope.projectname = $scope.projectname.replace(' ', '');
 
-            var regex = /^[a-zA-Z]$/;
+            var regex = /^[a-zA-Z]+$/;
 
             if(regex.test($scope.projectname)){
                 var url = baseUrlService.GetBaseUrl();
