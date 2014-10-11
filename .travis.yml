@@ -5,11 +5,10 @@ before_script:
 - npm install -g bower grunt-cli
 - bower install
 after_script:
-#Create dist folder
 - grunt build
 - npm install heroku
 - git remote add heroku git@heroku.com:starscream-bootstrap.git
-- export HEROKU_API_KEY=ENTER_KEY_HERE
+- export HEROKU_API_KEY=Jd/psO5GsoAWhTTfIfwW7+315nwN4LC2yvy9hpZLPBdjXc2A8YJ4hUMmQg7TlT3sdQ/4zrNhQhTclZGZNqtvZ1yaLCt9ZrVhqfL2xnzfr/9KYOdiriiReXMsmerISsT1GKQa5bjxo9ZHauE/qbQUBnLcsc/akOATh1XNVVRCcFE=
 - echo "Host heroku.com" >> ~/.ssh/config
 - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
 - echo "   CheckHostIP no" >> ~/.ssh/config
