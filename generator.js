@@ -54,9 +54,6 @@ var renameAllFoldersAndFiles = function(file, projectName){
                 newFileName = file.replaceLast('starscream', projectName);
             }
 
-            //console.log('Old file: '+ file);
-            //console.log('New File: '+ newFileName);
-
             fs.renameSync(file, newFileName);
         }
     }
@@ -67,7 +64,6 @@ var generateNewFile = function(file, projectName){
     var fileInfo = fs.lstatSync(file);
     if(file.contains('.nuget')){
         // ignore .nuget folder contents
-        //console.log('Ignoring .nuget');
     }
     else if(fileInfo.isDirectory() && file.containsAfter('StarscreamBootstrap','Starscream')){
 
@@ -133,9 +129,6 @@ var generate = function(projectName, res){
     var sourceDirectory = __dirname + '/Starscream';
     var destinationDirectory = __dirname + '/temp/' + projectName;
 
-    //console.log('Source Directory: ' + sourceDirectory);
-    //console.log('Destination Directory: ' + destinationDirectory);
-
     //Create Destination Directory:
     wrench.mkdirSyncRecursive(destinationDirectory, 0777);
 
@@ -159,8 +152,6 @@ var generate = function(projectName, res){
 
     // Zip Files
     var zipBuffer = getZipBuffer(destinationDirectory, res);
-
-    //console.log('Success');
 };
 
 // Entry Point
