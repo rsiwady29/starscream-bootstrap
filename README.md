@@ -1,9 +1,8 @@
 Starscream Bootstrap
 ====================
+Live: http://starscream-bootstrap.herokuapp.com/
 
 The goal of this project is to reduce time when using [Acklen Avenue's Starscream](https://github.com/AcklenAvenue/Starscream) Boilerplate.
-
-Demo: http://starscream-bootstrap.herokuapp.com/
 
 How?
 === 
