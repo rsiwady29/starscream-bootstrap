@@ -16,6 +16,8 @@ after_script:
 - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 - heroku keys:clear
 - yes | heroku keys:add
+- yes | git log
+- yes | ls -noa
 - yes | git push heroku master
 deploy:
   provider: heroku
