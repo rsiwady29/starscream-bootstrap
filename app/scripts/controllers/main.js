@@ -26,6 +26,6 @@ angular.module('starscreamBootstrapApp')
             var url = baseUrlService.GetBaseUrl();
             var downloadLink = url + '/getStarscream?projectname='+$scope.projectname.trim().replace(' ','');
 
-            //window.location = downloadLink;
+            window.location = downloadLink;
         }
   }]);
