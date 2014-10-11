@@ -151,11 +151,11 @@ var generate = function(projectName, res){
     });
 
     // Get All files again, now with new folder names
-    /*var files = wrench.readdirSyncRecursive(destinationDirectory);
+    var files = wrench.readdirSyncRecursive(destinationDirectory);
 
-    files.forEach(function(file){
+    files.reverse().forEach(function(file){
         generateNewFile(destinationDirectory+'/'+file, projectName);
-    });*/
+    });
 
     // Zip Files
     var zipBuffer = getZipBuffer(destinationDirectory, res);
