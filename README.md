@@ -6,7 +6,7 @@ The goal of this project is to reduce time when using [Acklen Avenue's Starscrea
 
 How?
 === 
-The boilerplate/template by itself is awesome, but when you start a new project you always get into the tedious task of renaming and customizing the files and content to match accordingly with your project's name. And let's face it this task is error prone. Forgetting to renaming something is really easy.
+The boilerplate/template by itself is awesome, but when you start a new project you always get into the tedious task of renaming and customizing the files and content to match accordingly with your project's name. And let's face it this task is error prone. Forgetting to rename something is really easy.
 
 So I decided to create this app to help you(and me) save great amount of time and work. The app will automate the process of renaming files, folders, projects source (namespaces, references) and other necessary files so you can start developing your application right away. Isn't it cool? 
 
