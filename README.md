@@ -1,4 +1,4 @@
-https://travis-ci.org/rsiwady29/starscream-bootstrap.svg?branch=master
+[![Build Status](https://travis-ci.org/rsiwady29/starscream-bootstrap.svg?branch=master)](https://travis-ci.org/rsiwady29/starscream-bootstrap)
 
 Starscream Bootstrap
 ====================
