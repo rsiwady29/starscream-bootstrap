@@ -1,3 +1,5 @@
+https://travis-ci.org/rsiwady29/starscream-bootstrap.svg?branch=master
+
 Starscream Bootstrap
 ====================
 Live: http://starscream-bootstrap.herokuapp.com/
