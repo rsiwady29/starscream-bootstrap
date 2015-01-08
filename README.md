@@ -27,5 +27,5 @@ Don't know how to help?
 - This project could really find Unit tests useful.
 - If you find any [issues](https://github.com/rsiwady29/starscream-bootstrap/issues) please report them and/or submit a pull request with the fix.
 
-If you like this project don't forget give it a Star :) 
+If you like this project don't forget to give it a Star :) 
 Happy Coding! 
