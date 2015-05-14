@@ -39,21 +39,18 @@ var renameAllFoldersAndFiles = function(file, projectName){
 
     var fileInfo = fs.lstatSync(file);
     if(file.nameContains('unicron') ||
-        file.nameContains('Unicron') ||
-        file.nameContains('Unicron')){
+        file.nameContains('Unicron') && fs.existsSync(file)){
 
         if(fileInfo.isDirectory() || file.endsWith('.sln') || file.endsWith('.csproj') ){
             var newFileName= '';
             if(file.nameContains('Unicron')){
                 newFileName = file.replaceLast('Unicron', projectName);
             }
-            else if(file.nameContains('Unicron')){
-                newFileName = file.replaceLast('Unicron', projectName);
-            }
             else if(file.nameContains('unicron')){
                 newFileName = file.replaceLast('unicron', projectName);
             }
-
+            console.log('Old File Name ' + file);
+            console.log('New File Name ' + newFileName);
             fs.renameSync(file, newFileName);
         }
     }
