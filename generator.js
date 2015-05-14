@@ -38,20 +38,20 @@ String.prototype.replaceLast = function(text, newText) {
 var renameAllFoldersAndFiles = function(file, projectName){
 
     var fileInfo = fs.lstatSync(file);
-    if(file.nameContains('starscream') ||
-        file.nameContains('Starscream') ||
-        file.nameContains('StarScream')){
+    if(file.nameContains('unicron') ||
+        file.nameContains('Unicron') ||
+        file.nameContains('Unicron')){
 
         if(fileInfo.isDirectory() || file.endsWith('.sln') || file.endsWith('.csproj') ){
             var newFileName= '';
-            if(file.nameContains('StarScream')){
-                newFileName = file.replaceLast('StarScream', projectName);
+            if(file.nameContains('Unicron')){
+                newFileName = file.replaceLast('Unicron', projectName);
             }
-            else if(file.nameContains('Starscream')){
-                newFileName = file.replaceLast('Starscream', projectName);
+            else if(file.nameContains('Unicron')){
+                newFileName = file.replaceLast('Unicron', projectName);
             }
-            else if(file.nameContains('starscream')){
-                newFileName = file.replaceLast('starscream', projectName);
+            else if(file.nameContains('unicron')){
+                newFileName = file.replaceLast('unicron', projectName);
             }
 
             fs.renameSync(file, newFileName);
@@ -65,9 +65,9 @@ var generateNewFile = function(file, projectName){
     if(file.contains('.nuget')){
         // ignore .nuget folder contents
     }
-    else if(fileInfo.isDirectory() && file.containsAfter('StarscreamBootstrap','Starscream')){
+    else if(fileInfo.isDirectory() && file.containsAfter('StarscreamBootstrap','Unicron')){
 
-        var newFileName = file.replaceLast('Starscream', projectName);
+        var newFileName = file.replaceLast('Unicron', projectName);
         console.log('Old file: '+ file);
         console.log('New File: '+ newFileName);
 
@@ -76,7 +76,7 @@ var generateNewFile = function(file, projectName){
     else if(!fileInfo.isDirectory() && !file.endsWith(".dll") && !file.endsWith(".DS_Store")){
 
         var text = fs.readFileSync(file, 'utf-8');
-        var regex = new RegExp("Starscream|starscream|StarScream","gm")
+        var regex = new RegExp("Unicron|unicron|Unicron","gm")
         text = text.replace(regex, projectName);
 
         fs.writeFileSync(file, text);
@@ -126,7 +126,7 @@ var generate = function(projectName, res){
     // This is a naive and brute force approach :)
     // Suggestions to improve the code are welcomed
 
-    var sourceDirectory = __dirname + '/Starscream';
+    var sourceDirectory = __dirname + '/Unicron';
     var destinationDirectory = __dirname + '/temp/' + projectName;
 
     //Create Destination Directory:
