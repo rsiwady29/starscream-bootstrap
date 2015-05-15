@@ -57,7 +57,7 @@ var renameAllFoldersAndFiles = function(file, projectName){
 var generateNewFile = function(file, projectName){
 
     var fileInfo = fs.lstatSync(file);
-    if(file.contains('.nuget')){
+    if(file.contains('.nuget') || file.endsWith('.git')){
         // ignore .nuget folder contents
     }
     else if(fileInfo.isDirectory() && file.containsAfter('StarscreamBootstrap','Unicron')){
@@ -103,7 +103,7 @@ var getZipBuffer = function(destinationDirectory, res){
     zippedArchive.addFiles(fileObjects, function(){
         var buff = zippedArchive.toBuffer(function(bufferResult){
             res.contentType('zip');
-            res.setHeader('Content-disposition', 'attachment; filename=starscream_bootstrap.zip');
+            res.setHeader('Content-disposition', 'attachment; filename=unicron_bootstrap.zip');
             res.send(bufferResult);
             res.end();
 
