@@ -49,8 +49,6 @@ var renameAllFoldersAndFiles = function(file, projectName){
             else if(file.nameContains('unicron')){
                 newFileName = file.replaceLast('unicron', projectName);
             }
-            console.log('Old File Name ' + file);
-            console.log('New File Name ' + newFileName);
             fs.renameSync(file, newFileName);
         }
     }
@@ -65,9 +63,6 @@ var generateNewFile = function(file, projectName){
     else if(fileInfo.isDirectory() && file.containsAfter('StarscreamBootstrap','Unicron')){
 
         var newFileName = file.replaceLast('Unicron', projectName);
-        console.log('Old file: '+ file);
-        console.log('New File: '+ newFileName);
-
         fs.renameSync(file, newFileName+'');
     }
     else if(!fileInfo.isDirectory() && !file.endsWith(".dll") && !file.endsWith(".DS_Store")){
