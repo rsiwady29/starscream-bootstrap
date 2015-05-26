@@ -14,12 +14,12 @@ angular.module('starscreamBootstrapApp')
 
         $scope.getStarscream = function(){
 
-            if($scope.projectname.trim() == ''){
+            if($scope.projectname.trim() === ''){
                 toastr.error('You must enter a project name');
                 return;
             }
 
-            if($scope.projectname.toLowerCase().indexOf('starscream') != -1){
+            if($scope.projectname.toLowerCase().indexOf('starscream') !== -1){
                 // we currently don't support projects with starscream inside their name < :( >
                 toastr.error('Starscream is not a valid project name');
                 return;
@@ -39,5 +39,5 @@ angular.module('starscreamBootstrapApp')
             else{
                 toastr.error('Invalid project name!');
             }
-        }
+        };
   }]);

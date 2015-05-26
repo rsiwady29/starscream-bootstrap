@@ -6,7 +6,7 @@ angular
 
         this.GetBaseUrl = function() {
             var baseUrl = '';
-            if (window.location.host.indexOf("localhost") != -1) {
+            if (window.location.host.indexOf('localhost') !== -1) {
                 baseUrl = 'http://localhost:8080';
             }
             return baseUrl;
