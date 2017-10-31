@@ -1,6 +1,9 @@
 [![Build Status](https://travis-ci.org/rsiwady29/starscream-bootstrap.svg?branch=master)](https://travis-ci.org/rsiwady29/starscream-bootstrap)
 Starscream Bootstrap
 ====================
+
+# This project is not maintained anymore.
+
 Live: http://starscream-bootstrap.herokuapp.com/
 
 The goal of this project is to reduce time when using [Acklen Avenue's Starscream](https://github.com/AcklenAvenue/Starscream) Boilerplate.
